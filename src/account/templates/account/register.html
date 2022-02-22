@@ -1,19 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-</head>
-<body>
-    <form class="login-box" method="POST">
-    {% csrf_token %}
-    <h1>Register</h1>
+{% extends "base/base.html" %}
 
-    {{register_form.as_p}}
+{% block title %}
+<title>Register</title>
+{% endblock %}
 
-    <button class="Register">Register</button>
-</form>
-</body>
-</html>
+{% block content %}
+<form class="login-box" method="POST">
+        {% csrf_token %}
+        <h1>Register</h1>
+
+        {% if register_form.errors %}
+            {% for field in register_form %}
+                {% if field.errors %}
+                    <div>
+                        <p>
+                            {{ field.label }}: {{ field.errors|striptags }}
+                        </p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {{register_form.as_p}}
+
+        <button >Register</button>
+    </form>
+{% endblock %}
