@@ -16,12 +16,7 @@ def register_account(request):
             user.set_password(password)
             user.save()
 
+            # display register data on another page
             return redirect('display_data')
 
-        else:
-            register_form = RegistrationForm()
-
-        # display register data on another page
-        
-    
     return render(request, template_name, {'register_form': register_form})
