@@ -49,6 +49,9 @@ class RegistrationForm(forms.Form):
                 'Please use another Email, that is already taken')
         return email
 
+
+    # Futere design
+
     # def __init__(self, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
     #     self.fields['username'].widget.attrs.update(
